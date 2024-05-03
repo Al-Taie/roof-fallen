@@ -1,17 +1,17 @@
-import 'package:college/signup_page.dart';
+import 'package:college/Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'Controller.dart';
+import 'login_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignupPageState extends State<SignupPage> {
   Controller controller = Get.find();
 
   @override
@@ -44,11 +44,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Obx(
-                  () => Column(
+                child: Obx(() {
+                  return Column(
                     children: [
                       const Text(
-                        'Login By Your Account',
+                        'Signup By Your Account',
                         style: TextStyle(fontSize: 20.0),
                       ),
                       const SizedBox(height: 20.0),
@@ -59,6 +59,17 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           hintText: 'username',
                           errorText: controller.usernameError,
+                          border: const OutlineInputBorder(),
+                        ),
+                      ),
+                      const SizedBox(height: 8.0),
+                      TextField(
+                        onChanged: (value) {
+                          controller.email.value = value;
+                        },
+                        decoration: InputDecoration(
+                          hintText: 'email',
+                          errorText: controller.emailError,
                           border: const OutlineInputBorder(),
                         ),
                       ),
@@ -79,13 +90,13 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           Expanded(
                             child: ElevatedButton(
-                              child: const Text('Login',
+                              child: const Text('Signup',
                                   style: TextStyle(
                                     fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
                                   )),
                               onPressed: () {
-                                controller.login();
+                                controller.signUp();
                               },
                             ),
                           ),
@@ -95,21 +106,21 @@ class _LoginPageState extends State<LoginPage> {
                         children: [
                           Expanded(
                             child: TextButton(
-                              child: const Text('SingUp',
+                              child: const Text('Login',
                                   style: TextStyle(
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.bold,
                                   )),
                               onPressed: () {
-                                Get.to(const SignupPage());
+                                Get.offAll(const LoginPage());
                               },
                             ),
                           ),
                         ],
                       ),
                     ],
-                  ),
-                ),
+                  );
+                }),
               ),
             ),
           ],

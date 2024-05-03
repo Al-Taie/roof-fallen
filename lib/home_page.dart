@@ -1,4 +1,7 @@
+import 'package:college/register_student_page.dart';
+import 'package:college/students_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -10,83 +13,33 @@ class HomePage extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              const Padding(
+                padding: EdgeInsets.all(16.0),
                 child: Image(
                   image: AssetImage('assets/images/welcome.png'),
                 ),
               ), // Welcome image
-              SizedBox(height: 40.0),
+              const SizedBox(height: 40.0),
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(12.0),
-                        child: Ink(
-                          height: 148,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: Colors.brown,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.receipt_outlined,
-                                size: 64.0,
-                                color: Colors.white,
-                              ),
-                              Text(
-                                'Student registration',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    button(
+                      title: 'Student registration',
+                      icon: Icons.receipt_outlined,
+                      onTap: () {
+                        Get.to(const RegisterStudentPage());
+                      },
                     ),
-                    SizedBox(width: 20.0),
-                    Expanded(
-                      child: InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(12.0),
-                        child: Ink(
-                          height: 148,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: Colors.brown,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.person,
-                                size: 64.0,
-                                color: Colors.white,
-                              ),
-                              Text(
-                                'Students',
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    )
+                    const SizedBox(width: 20.0),
+                    button(
+                      title: 'Students',
+                      icon: Icons.person,
+                      onTap: () {
+                        Get.to(const StudentsPage());
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -96,4 +49,43 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget button({
+  required String title,
+  required IconData icon,
+  required VoidCallback onTap,
+}) {
+  return Expanded(
+    child: InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12.0),
+      child: Ink(
+        height: 148,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12.0),
+          color: Colors.brown,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(
+              icon,
+              size: 64.0,
+              color: Colors.white,
+            ),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.white,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }
