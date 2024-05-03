@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(Controller());
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: 'IT College',
       theme: ThemeData(
         colorScheme: const ColorScheme.light(primary: Colors.brown),
         useMaterial3: false,
