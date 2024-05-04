@@ -1,10 +1,7 @@
-import 'package:college/register_student_page.dart';
-import 'package:college/students_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +13,7 @@ class HomePage extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Image(
-                  image: AssetImage('assets/images/welcome.png'),
+                  image: AssetImage('images/welcome.png'),
                 ),
               ), // Welcome image
               const SizedBox(height: 40.0),
@@ -29,7 +26,7 @@ class HomePage extends StatelessWidget {
                       title: 'Student registration',
                       icon: Icons.receipt_outlined,
                       onTap: () {
-                        Get.to(const RegisterStudentPage());
+                        Navigator.of(context).pushNamed("/register_student");
                       },
                     ),
                     const SizedBox(width: 20.0),
@@ -37,7 +34,7 @@ class HomePage extends StatelessWidget {
                       title: 'Students',
                       icon: Icons.person,
                       onTap: () {
-                        Get.to(const StudentsPage());
+                        Navigator.of(context).pushNamed("/students");
                       },
                     ),
                   ],

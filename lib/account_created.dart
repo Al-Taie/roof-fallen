@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import 'login_page.dart';
-
-class AccountCreatedPage extends StatefulWidget {
-  const AccountCreatedPage({super.key});
+class CreatedAccount extends StatefulWidget {
+  const CreatedAccount({super.key});
 
   @override
-  State<AccountCreatedPage> createState() => _AccountCreatedPageState();
+  State<CreatedAccount> createState() => _CreatedAccountState();
 }
 
-class _AccountCreatedPageState extends State<AccountCreatedPage> {
+class _CreatedAccountState extends State<CreatedAccount> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +22,7 @@ class _AccountCreatedPageState extends State<AccountCreatedPage> {
               const SizedBox(height: 20.0),
               ElevatedButton(
                 onPressed: () {
-                  Get.offAll(() => const LoginPage());
+                  Navigator.of(context).pushReplacementNamed("/login");
                 },
                 child: const Text('Login'),
               ),

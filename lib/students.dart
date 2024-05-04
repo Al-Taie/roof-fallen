@@ -1,33 +1,36 @@
-import 'package:college/Controller.dart';
+import 'package:college/provider_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class StudentsPage extends StatelessWidget {
-  const StudentsPage({super.key});
+class Students extends StatefulWidget {
+  const Students({super.key});
 
   @override
+  State<Students> createState() => _Students();
+}
+
+class _Students extends State<Students> {
+  @override
   Widget build(BuildContext context) {
-    Controller controller = Get.find();
-    RxList<Student> students = controller.students;
+    ProviderModel model = ProviderModel.instance;
+    List<StudentModel> students = model.students;
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Obx(() {
-            return ListView.builder(
-              padding: const EdgeInsets.all(12.0),
-              itemCount: students.length,
-              itemBuilder: (context, index) {
-                return cardItem(
-                  name: students[index].name,
-                  email: students[index].email,
-                  date: students[index].birthday,
-                  onDelete: () {
-                    controller.delete(index);
-                  },
-                );
-              },
-            );
-          }),
+          child: ListView.builder(
+            padding: const EdgeInsets.all(12.0),
+            itemCount: students.length,
+            itemBuilder: (context, index) {
+              return cardItem(
+                name: students[index].firstname,
+                email: students[index].email,
+                date: students[index].birthday,
+                onDelete: () {
+                  model.removeStudent(students[index]);
+                  setState(() {});
+                },
+              );
+            },
+          ),
         ),
       ),
     );
