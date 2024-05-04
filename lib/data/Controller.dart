@@ -1,7 +1,9 @@
 import 'package:college/home_page.dart';
 import 'package:get/get.dart';
 
-import 'account_created_page.dart';
+import '../account_created_page.dart';
+import 'Student.dart';
+import 'User.dart';
 
 class Controller extends GetxController {
   RxList<Student> students = <Student>[].obs;
@@ -76,27 +78,4 @@ class Controller extends GetxController {
 
     Get.offAll(const HomePage());
   }
-}
-
-class Student {
-  String firstname;
-  String lastname;
-  String email;
-  String birthday;
-  String name;
-
-  Student(
-      {required this.firstname,
-      required this.lastname,
-      required this.email,
-      required this.birthday})
-      : name = "$firstname $lastname";
-}
-
-class User {
-  String username;
-  String password;
-  String email;
-
-  User({this.username = "", this.password = "", this.email = ""});
 }

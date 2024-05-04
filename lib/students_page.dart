@@ -1,6 +1,8 @@
-import 'package:college/Controller.dart';
+import 'package:college/data/Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'data/Student.dart';
 
 class StudentsPage extends StatelessWidget {
   const StudentsPage({super.key});

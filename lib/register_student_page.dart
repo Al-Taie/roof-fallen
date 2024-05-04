@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'Controller.dart';
+import 'data/Controller.dart';
 
 class RegisterStudentPage extends StatefulWidget {
   const RegisterStudentPage({super.key});
